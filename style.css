@@ -26,9 +26,9 @@ body {
 
 .logo {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 44px;
+  font-size: 32px;
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   color: #222;
   line-height: 1;
 }
@@ -209,4 +209,135 @@ nav a:hover {
     font-size: 18px;
     max-width: 100%;
   }
+}
+
+.project-detail {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.project-detail h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;        /* 比你现在小很多 */
+  font-weight: 400;       /* 关键！从粗体变正常 */
+  letter-spacing: -0.5px; /* 微微收紧，更高级 */
+  margin-bottom: 30px;
+}
+
+.project-detail h1 {
+  text-align: left;   /* 不要居中，更像设计网站 */
+  margin-top: 20px;
+}
+
+.project-hero {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  margin-bottom: 54px;
+  object-fit: cover;
+}
+
+.project-section {
+  margin-bottom: 46px;
+  padding-top: 18px;
+  border-top: 1px solid #dcdcdc;
+}
+
+.project-section h2 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 14px;
+}
+
+.project-section p {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #222;
+  max-width: 760px;
+}
+
+.project-title-link {
+  color: #3a4a3f;   /* 偏灰绿，更设计感 */
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.project-title-link:hover {
+  opacity: 0.6;
+}
+
+.tags {
+  margin-top: 14px;
+}
+
+.tags span {
+  display: inline-block;
+  font-size: 16px;
+  color: #6b7c5a;
+  border-bottom: 1px solid #6b7c5a;
+  margin-right: 14px;
+  margin-bottom: 6px;
+}
+
+a {
+  color: #1a1a1a;   /* 主色：深灰（高级） */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6b7c5a;   /* hover：偏橄榄绿（设计感） */
+}
+
+.tags {
+  margin-top: 12px;
+}
+
+.project-hero {
+  width: 100%;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+.project-detail {
+  max-width: 800px;   /* 控制内容宽度（关键） */
+  margin: 0 auto;     /* 左右自动 = 居中 */
+  padding: 60px 20px; /* 上下和左右留白 */
+}
+
+.project-section h2 {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.project-section {
+  margin-bottom: 40px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 30px;
+  color: #bbb;         /* 浅灰色 */
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  color: #666;         /* hover 变深一点 */
+}
+
+.back-link {
+  position: absolute;
+  top: 40px;
+  left: 60px;
 }
