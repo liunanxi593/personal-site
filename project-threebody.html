@@ -5,19 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Three-Body Problem Re-Design</title>
 
-  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- 你的样式 -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .slider-container {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 800px !important;
+      margin: 0 auto 30px auto !important;
+      overflow: hidden !important;
+      border-radius: 8px !important;
+    }
+    .slider-images {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      width: 100% !important;
+    }
+    .slider-images img {
+      flex: 0 0 100% !important;
+      width: 100% !important; 
+      height: auto !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    .slider-btn {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      background: rgba(0,0,0,0.5) !important; 
+      color: white !important;
+      border: none !important;
+      padding: 15px 20px !important;
+      cursor: pointer !important;
+      font-size: 24px !important;
+      z-index: 99 !important;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.8) !important; } 
+    .prev-btn { left: 10px !important; }
+    .next-btn { right: 10px !important; }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
-    <a href="project-threebody.html" class="back-link">←</a>
+    <a href="projects.html" class="back-link">←</a>
 
-    <!-- 顶部导航（和之前页面保持一致） -->
     <header class="nav">
       <div class="logo">Nancy Liu</div>
       <nav>
@@ -26,37 +60,77 @@
       </nav>
     </header>
 
-    <!-- 页面内容 -->
-  <main class="project-detail">
+    <main class="project-detail">
+      <h1>The Three-Body Problem Re-Design</h1>
 
-  <h1>The Three-Body Problem Re-Design</h1>
+      <div class="slider-container">
+        <div class="slider-images" id="threebody-slider">
+          <img src="threebody-gallery-2.jpg" alt="Slide 3 Clone"> <img src="threebody.jpg" alt="Slide 1">                 <img src="threebody-gallery-1.jpg" alt="Slide 2">       <img src="threebody-gallery-2.jpg" alt="Slide 3">       <img src="threebody.jpg" alt="Slide 1 Clone">           </div>
+        
+        <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
+      </div>
+      <section class="project-section">
+        <h2>Background</h2>
+        <p>
+          This project begins with selected textual scenes from <em>The Three-Body Problem</em> and explores how science fiction reading can be extended beyond plain text through visual and material design.
+        </p>
+      </section>
 
-  <img src="threebody.jpg" alt="The Three-Body Problem Re-Design" class="project-hero" />
+      <section class="project-section">
+        <h2>Problem</h2>
+        <p>
+          Science fiction concepts and scenes are often abstract, dense, and difficult to grasp through text alone. This can make the reading experience feel distant or hard to visualize.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Background</h2>
-    <p>
-      This project begins with selected textual scenes from <em>The Three-Body Problem</em> and explores how science fiction reading can be extended beyond plain text through visual and material design.
-    </p>
-  </section>
+      <section class="project-section">
+        <h2>Approach</h2>
+        <p>
+          This project translates selected textual scenes into visual storytelling through abstract graphics and light-transmitting materials. By turning textual content into visual and spatial reading experiences, it makes science fiction concepts more understandable and perceptible.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Problem</h2>
-    <p>
-      Science fiction concepts and scenes are often abstract, dense, and difficult to grasp through text alone. This can make the reading experience feel distant or hard to visualize.
-    </p>
-  </section>
-
-  <section class="project-section">
-    <h2>Approach</h2>
-    <p>
-      This project translates selected textual scenes into visual storytelling through abstract graphics and light-transmitting materials. By turning textual content into visual and spatial reading experiences, it makes science fiction concepts more understandable and perceptible.
-    </p>
-  </section>
-
-</main>
-
+    </main>
   </div>
 
+  <script>
+    const slider = document.getElementById('threebody-slider');
+    let currentSlide = 1; // 从真图一（排在第2个位置）开始
+    let isTransitioning = false; 
+    
+    // 初始化：直接平移到真图一的位置
+    slider.style.transform = `translateX(-100%)`;
+
+    function moveSlider(direction) {
+      if (isTransitioning) return; 
+      isTransitioning = true;
+      
+      currentSlide = currentSlide + direction;
+      
+      // 开启平滑滑动动画
+      slider.style.transition = 'transform 0.4s ease-in-out';
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // 监听动画结束，进行“瞬间偷换”
+    slider.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      
+      // 如果滑到了最后的“假图一”
+      if (currentSlide === 4) {
+        currentSlide = 1; 
+        slider.style.transition = 'none';
+        slider.style.transform = `translateX(-100%)`;
+      }
+      
+      // 如果滑到了最前面的“假图三”
+      if (currentSlide === 0) {
+        currentSlide = 3; 
+        slider.style.transition = 'none';
+        slider.style.transform = `translateX(-300%)`;
+      }
+    });
+  </script>
 </body>
 </html>

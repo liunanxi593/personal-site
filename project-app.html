@@ -5,19 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Campus Second-hand Trading App</title>
 
-  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- 你的样式 -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .slider-container {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 800px !important;
+      margin: 0 auto 30px auto !important;
+      overflow: hidden !important;
+      border-radius: 8px !important;
+    }
+    .slider-images {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      width: 100% !important;
+    }
+    .slider-images img {
+      flex: 0 0 100% !important;
+      width: 100% !important; 
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    .slider-btn {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      background: rgba(0,0,0,0.5) !important; 
+      color: white !important;
+      border: none !important;
+      padding: 15px 20px !important;
+      cursor: pointer !important;
+      font-size: 24px !important;
+      z-index: 99 !important;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.8) !important; } 
+    .prev-btn { left: 10px !important; }
+    .next-btn { right: 10px !important; }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
-    <a href="project-app.html" class="back-link">←</a>
+    <a href="projects.html" class="back-link">←</a>
 
-    <!-- 顶部导航（和之前页面保持一致） -->
     <header class="nav">
       <div class="logo">Nancy Liu</div>
       <nav>
@@ -26,37 +60,74 @@
       </nav>
     </header>
 
-    <!-- 页面内容 -->
-  <main class="project-detail">
+    <main class="project-detail">
 
-  <h1>Campus Second-hand Trading App</h1>
+      <h1>Campus Second-hand Trading App</h1>
 
-  <img src="app.jpg" alt="Campus Second-hand Trading App" class="project-hero" />
+      <div class="slider-container">
+        <div class="slider-images" id="app-slider">
+          <img src="app-gallery-1.jpg" alt="Slide 2 Clone"> <img src="app.jpg" alt="Slide 1">                 <img src="app-gallery-1.jpg" alt="Slide 2">       <img src="app-gallery-2.jpg" alt="Slide 3">       <img src="app.jpg" alt="Slide 1 Clone">           </div>
+        
+        <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
+      </div>
+      <section class="project-section">
+        <h2>Background</h2>
+        <p>
+          This project is based on the campus second-hand trading context, where users need to browse, compare, and make decisions efficiently within a digital platform.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Background</h2>
-    <p>
-      This project is based on the campus second-hand trading context, where users need to browse, compare, and make decisions efficiently within a digital platform.
-    </p>
-  </section>
+      <section class="project-section">
+        <h2>Problem</h2>
+        <p>
+          Second-hand trading platforms often involve scattered information, unclear trust cues, and inefficient user flows, which can make decision-making difficult for users.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Problem</h2>
-    <p>
-      Second-hand trading platforms often involve scattered information, unclear trust cues, and inefficient user flows, which can make decision-making difficult for users.
-    </p>
-  </section>
+      <section class="project-section">
+        <h2>Approach</h2>
+        <p>
+          This project designs the information architecture, user flow, and trust mechanisms for a campus second-hand trading platform. It also optimizes interface presentation and interaction feedback in order to support clearer navigation and better decision-making.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Approach</h2>
-    <p>
-      This project designs the information architecture, user flow, and trust mechanisms for a campus second-hand trading platform. It also optimizes interface presentation and interaction feedback in order to support clearer navigation and better decision-making.
-    </p>
-  </section>
-
-</main>
-
+    </main>
   </div>
 
+  <script>
+    // 注意：这里的 id 换成了 app-slider
+    const slider = document.getElementById('app-slider');
+    let currentSlide = 1; 
+    let isTransitioning = false; 
+    
+    slider.style.transform = `translateX(-100%)`;
+
+    function moveSlider(direction) {
+      if (isTransitioning) return; 
+      isTransitioning = true;
+      
+      currentSlide = currentSlide + direction;
+      
+      slider.style.transition = 'transform 0.4s ease-in-out';
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    slider.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      
+      if (currentSlide === 3) {
+        currentSlide = 1; 
+        slider.style.transition = 'none';
+        slider.style.transform = `translateX(-100%)`;
+      }
+      
+      if (currentSlide === 0) {
+        currentSlide = 2; 
+        slider.style.transition = 'none';
+        slider.style.transform = `translateX(-300%)`;
+      }
+    });
+  </script>
 </body>
 </html>

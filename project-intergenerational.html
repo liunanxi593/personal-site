@@ -3,21 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <title>Intergenerational Communication Design</title>
+  <title>Intergenerational Communication Design</title>
 
-  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- 你的样式 -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .slider-container {
+      position: relative !important;
+      width: 100 !important;
+      max-width: 800px !important;
+      margin: 0 auto 30px auto !important;
+      overflow: hidden !important;
+      border-radius: 8px !important;
+    }
+    .slider-images {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      width: 100% !important;
+    }
+    .slider-images img {
+      flex: 0 0 100% !important;
+      width: 100% !important; 
+      height: 100% !important;      /* 强制高度填满 */
+      object-fit: cover !important; /* 强制保持图片原始比例，不拉伸 */
+      display: block !important;
+    }
+    .slider-btn {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      background: rgba(0,0,0,0.5) !important; 
+      color: white !important;
+      border: none !important;
+      padding: 15px 20px !important;
+      cursor: pointer !important;
+      font-size: 24px !important;
+      z-index: 99 !important;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.8) !important; } 
+    .prev-btn { left: 10px !important; }
+    .next-btn { right: 10px !important; }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
-    <a href="project-intergenerational.html" class="back-link">←</a>
+    <a href="projects.html" class="back-link">←</a>
 
-    <!-- 顶部导航（和之前页面保持一致） -->
     <header class="nav">
       <div class="logo">Nancy Liu</div>
       <nav>
@@ -26,37 +60,78 @@
       </nav>
     </header>
 
-    <!-- 页面内容 -->
-  <main class="project-detail">
+    <main class="project-detail">
 
-  <h1>Intergenerational Communication Design</h1>
+      <h1>Intergenerational Communication Design</h1>
 
-  <img src="intergenerational.jpg" alt="Intergenerational Communication Design" class="project-hero" />
+      <div class="slider-container">
+        <div class="slider-images" id="inter-slider">
+          <img src="inter-gallery-1.jpg" alt="Slide 2 Clone"> <img src="intergenerational.jpg" alt="Slide 1">       <img src="inter-gallery-1.jpg" alt="Slide 2">       <img src="intergenerational.jpg" alt="Slide 1 Clone"> </div>
+        
+        <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
+      </div>
+      <section class="project-section">
+        <h2>Background</h2>
+        <p>
+          This project focuses on communication between young and older adults. It begins from the idea that conversation is influenced not only by words, but also by emotional states and the surrounding environment.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Background</h2>
-    <p>
-      This project focuses on communication between young and older adults. It begins from the idea that conversation is influenced not only by words, but also by emotional states and the surrounding environment.
-    </p>
-  </section>
+      <section class="project-section">
+        <h2>Problem</h2>
+        <p>
+          Emotional states in conversation are often difficult to identify in real time, and mismatched emotional atmospheres may limit the depth of communication between different generations.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Problem</h2>
-    <p>
-      Emotional states in conversation are often difficult to identify in real time, and mismatched emotional atmospheres may limit the depth of communication between different generations.
-    </p>
-  </section>
+      <section class="project-section">
+        <h2>Approach</h2>
+        <p>
+          This project uses text-based sentiment analysis to identify emotional states in conversation, and dynamically adjusts ambient lighting based on research on color and emotional arousal. In this way, the environment is used as a responsive medium to support deeper communication between young and older adults.
+        </p>
+      </section>
 
-  <section class="project-section">
-    <h2>Approach</h2>
-    <p>
-      This project uses text-based sentiment analysis to identify emotional states in conversation, and dynamically adjusts ambient lighting based on research on color and emotional arousal. In this way, the environment is used as a responsive medium to support deeper communication between young and older adults.
-    </p>
-  </section>
-
-</main>
-
+    </main>
   </div>
 
+  <script>
+    const slider = document.getElementById('inter-slider');
+    let currentSlide = 1; // 一开始停留在“真图一”的位置
+    let isTransitioning = false; 
+    
+    // 初始化位置：向左推一格，露出真图一
+    slider.style.transform = `translateX(-100%)`;
+
+    function moveSlider(direction) {
+      if (isTransitioning) return; 
+      isTransitioning = true;
+      
+      currentSlide = currentSlide + direction;
+      
+      // 开启滑动动画
+      slider.style.transition = 'transform 0.4s ease-in-out';
+      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // 动画结束后的“瞬间跳转”障眼法
+    slider.addEventListener('transitionend', () => {
+      isTransitioning = false;
+      
+      // 如果向右滑到了第 4 个位置（假图一）
+      if (currentSlide === 3) {
+        currentSlide = 1; // 偷偷把数字改回 1
+        slider.style.transition = 'none'; // 关掉动画
+        slider.style.transform = `translateX(-100%)`; // 瞬间瞬移回真图一
+      }
+      
+      // 如果向左滑到了第 1 个位置（假图二）
+      if (currentSlide === 0) {
+        currentSlide = 2; // 偷偷把数字改回 2
+        slider.style.transition = 'none'; // 关掉动画
+        slider.style.transform = `translateX(-200%)`; // 瞬间瞬移回真图二
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+/* =========================================
+   1. 基础设置 (Global Reset & Typography)
+   ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,17 +14,32 @@ body {
   line-height: 1.6;
 }
 
+a {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6b7c5a;
+}
+
 .container {
   max-width: 1320px;
   margin: 0 auto;
   padding: 34px 32px 80px 32px;
+  position: relative; /* 配合详情页的返回箭头定位 */
 }
 
+/* =========================================
+   2. 顶部导航 (Navigation)
+   ========================================= */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 72px;
+  padding-bottom: 34px;
+  margin-bottom: 54px;
+  border-bottom: 1px solid #d8d8d8;
 }
 
 .logo {
@@ -31,15 +49,6 @@ body {
   letter-spacing: 1px;
   color: #222;
   line-height: 1;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 34px;
-  margin-bottom: 54px;
-  border-bottom: 1px solid #d8d8d8;
 }
 
 .nav nav {
@@ -62,18 +71,19 @@ nav a:hover {
   color: #222;
 }
 
-.about-title {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  color: #222;
-}
-
+/* =========================================
+   3. About 页 (About Page)
+   ========================================= */
 .about-page {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 80px;
   align-items: center;
+}
+
+.about-left {
+  display: flex;
+  justify-content: center;
 }
 
 .about-left img {
@@ -84,9 +94,11 @@ nav a:hover {
   object-fit: cover;
 }
 
-.about-left {
-  display: flex;
-  justify-content: center;
+.about-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #222;
 }
 
 .about-right p {
@@ -98,7 +110,6 @@ nav a:hover {
 }
 
 .about-right p:last-child {
-  font-size: 16px;
   color: #555;
 }
 
@@ -112,6 +123,9 @@ nav a:hover {
   opacity: 0.7;
 }
 
+/* =========================================
+   4. 项目总览页 (Projects Page)
+   ========================================= */
 .projects-page {
   padding-top: 0;
 }
@@ -146,6 +160,7 @@ nav a:hover {
   object-fit: cover;
   display: block;
   margin-bottom: 22px;
+  border-radius: 8px; /* 给所有封面图加点圆角更和谐 */
 }
 
 .project-card h3 {
@@ -156,78 +171,47 @@ nav a:hover {
   letter-spacing: -0.5px;
 }
 
-.project-card p {
-  font-size: 18px;
-  color: #222;
-  margin-bottom: 18px;
+.project-title-link {
+  color: #3a4a3f;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.project-tags {
+.project-title-link:hover {
+  opacity: 0.6;
+}
+
+/* 统一了项目标签的样式 */
+.project-tags, .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 12px;
 }
 
-.project-tags span {
+.project-tags span, .tags span {
   font-size: 16px;
   color: #4f5f2f;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  margin-right: 4px;
 }
 
-@media (max-width: 1100px) {
-  .project-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-intro p {
-    font-size: 18px;
-  }
-
-  .project-card h3 {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .about-page {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .about-right h1 {
-    font-size: 52px;
-  }
-
-  .about-right p {
-    font-size: 18px;
-    max-width: 100%;
-  }
-}
-
+/* =========================================
+   5. 项目详情页 (Project Detail Page)
+   ========================================= */
 .project-detail {
-  max-width: 980px;
+  max-width: 800px;
   margin: 0 auto;
-  padding-top: 10px;
+  padding: 10px 20px 60px 20px;
 }
 
 .project-detail h1 {
   font-family: 'Inter', sans-serif;
-  font-size: 36px;        /* 比你现在小很多 */
-  font-weight: 400;       /* 关键！从粗体变正常 */
-  letter-spacing: -0.5px; /* 微微收紧，更高级 */
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
   margin-bottom: 30px;
-}
-
-.project-detail h1 {
-  text-align: left;   /* 不要居中，更像设计网站 */
   margin-top: 20px;
+  text-align: left;
 }
 
 .project-hero {
@@ -240,7 +224,7 @@ nav a:hover {
 
 .project-section {
   margin-bottom: 46px;
-  padding-top: 18px;
+  padding-top: 30px;
   border-top: 1px solid #dcdcdc;
 }
 
@@ -262,82 +246,50 @@ nav a:hover {
   max-width: 760px;
 }
 
-.project-title-link {
-  color: #3a4a3f;   /* 偏灰绿，更设计感 */
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.project-title-link:hover {
-  opacity: 0.6;
-}
-
-.tags {
-  margin-top: 14px;
-}
-
-.tags span {
-  display: inline-block;
-  font-size: 16px;
-  color: #6b7c5a;
-  border-bottom: 1px solid #6b7c5a;
-  margin-right: 14px;
-  margin-bottom: 6px;
-}
-
-a {
-  color: #1a1a1a;   /* 主色：深灰（高级） */
-  text-decoration: none;
-}
-
-a:hover {
-  color: #6b7c5a;   /* hover：偏橄榄绿（设计感） */
-}
-
-.tags {
-  margin-top: 12px;
-}
-
-.project-hero {
-  width: 100%;
-  margin-bottom: 40px;
-  border-radius: 10px;
-}
-
-.project-detail {
-  max-width: 800px;   /* 控制内容宽度（关键） */
-  margin: 0 auto;     /* 左右自动 = 居中 */
-  padding: 60px 20px; /* 上下和左右留白 */
-}
-
-.project-section h2 {
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.project-section {
-  margin-bottom: 40px;
-  border-top: 1px solid #eee;
-  padding-top: 30px;
-}
-
 .back-link {
+  position: absolute;
+  top: 40px;
+  left: -20px; /* 【关键修改】原来是 60px，现在改成 10px，数字越小越靠左 */
   display: inline-block;
   font-size: 30px;
-  color: #bbb;         /* 浅灰色 */
+  color: #bbb;
   text-decoration: none;
-  margin-bottom: 20px;
   transition: all 0.2s ease;
 }
 
 .back-link:hover {
-  color: #666;         /* hover 变深一点 */
+  color: #666;
 }
 
-.back-link {
-  position: absolute;
-  top: 40px;
-  left: 60px;
+/* =========================================
+   6. 手机/平板自适应 (Responsive Design)
+   ========================================= */
+@media (max-width: 1100px) {
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
+
+@media (max-width: 1000px) {
+  .about-page {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-right p {
+    font-size: 18px;
+    max-width: 100%;
+  }
+  .back-link {
+    position: static; /* 手机上取消绝对定位，避免重叠 */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .projects-intro p {
+    font-size: 18px;
+  }
+  .project-card h3 {
