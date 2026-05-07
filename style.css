@@ -188,7 +188,7 @@ nav a:hover {
 /* === 文字层：钉在顶部，绝不重叠 === */
 .project-info {
   position: absolute;
-  top: -50px;                /* 死死钉在轨道的顶部边缘 */
+  top: -80px;                /* 死死钉在轨道的顶部边缘 */
   left: 0;
   opacity: 0;
   transform: translateY(10px); 
