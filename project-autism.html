@@ -3,48 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autism Support Design</title>
+  <title>Autism Support Project Case Study</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-
-  <style>
-    .slider-container {
-      position: relative !important;
-      width: 100% !important;
-      max-width: 800px !important;
-      margin: 0 auto 30px auto !important;
-      overflow: hidden !important;
-      border-radius: 8px !important;
-    }
-    .slider-images {
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      width: 100% !important;
-    }
-    .slider-images img {
-      flex: 0 0 100% !important;
-      width: 100% !important; 
-      height: 100% !important;      /* 强制高度一致 */
-      object-fit: cover !important; /* 防止图片拉伸变形 */
-      display: block !important;
-    }
-    .slider-btn {
-      position: absolute !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      background: rgba(0,0,0,0.5) !important; 
-      color: white !important;
-      border: none !important;
-      padding: 15px 20px !important;
-      cursor: pointer !important;
-      font-size: 24px !important;
-      z-index: 99 !important;
-    }
-    .slider-btn:hover { background: rgba(0,0,0,0.8) !important; } 
-    .prev-btn { left: 10px !important; }
-    .next-btn { right: 10px !important; }
-  </style>
 </head>
 
 <body>
@@ -61,74 +23,51 @@
     </header>
 
     <main class="project-detail">
+      <h1>Autism Support Project</h1>
 
-      <h1>Autism Support Design</h1>
+      <img src="autism.jpg" alt="Autism Project Cover" class="article-image" />
 
-      <div class="slider-container">
-        <div class="slider-images" id="autism-slider">
-          <img src="autism-gallery-2.jpg" alt="Slide 3 Clone"> <img src="autism.jpg" alt="Slide 1">                 <img src="autism-gallery-1.jpg" alt="Slide 2">       <img src="autism-gallery-2.jpg" alt="Slide 3">       <img src="autism.jpg" alt="Slide 1 Clone">           </div>
-        
-        <button class="slider-btn prev-btn" onclick="moveSlider(-1)">&#10094;</button>
-        <button class="slider-btn next-btn" onclick="moveSlider(1)">&#10095;</button>
-      </div>
       <section class="project-section">
         <h2>Background</h2>
         <p>
-          This project was developed in the context of autism support and focuses on how nonverbal expression can be supported through making-based activities and visual communication.
+          This project focuses on play-based therapy and sensory interaction to assist autistic youth. It explores how tangible, hands-on making activities can create a safe and engaging environment for those who struggle with traditional forms of communication.
         </p>
       </section>
 
       <section class="project-section">
         <h2>Problem</h2>
         <p>
-          For autistic youth, emotions and experiences may not always be easily expressed or understood through spoken language alone. Without supportive translation, nonverbal expression can remain difficult for outside audiences to recognize.
+          Autistic youth often face significant challenges with nonverbal expression, leading to misunderstandings and emotional frustration. External audiences, including caregivers and peers, frequently lack the intuitive tools to decode these unique expressive states.
         </p>
       </section>
 
       <section class="project-section">
         <h2>Approach</h2>
         <p>
-          Based on play-based therapy and sensory interaction, this project encourages autistic youth to engage in nonverbal expression through hands-on making. These expressions are then translated into visual information through illustrations, labels, and brief text, making them easier for external audiences to understand.
+          By utilizing guided, hands-on making activities, the project empowers users to externalize their emotions. These abstract expressions are then translated into clear visual information—such as illustrations, labels, and structured text—bridging the communication gap and fostering better understanding for external audiences.
         </p>
       </section>
+
+      <div class="two-cards-wrapper">
+        
+        <div class="hover-card">
+          <img src="autism-gallery-1.jpg" alt="Sensory Interaction">
+          <div class="card-info">
+            <h3>Visual Design Details</h3>
+          </div>
+        </div>
+
+        <div class="hover-card">
+          <img src="autism-gallery-2.jpg" alt="Visual Translation">
+          <div class="card-info">
+            <h3>Design Practice</h3>
+          </div>
+        </div>
+
+      </div>
 
     </main>
   </div>
 
-  <script>
-    const slider = document.getElementById('autism-slider');
-    let currentSlide = 1; 
-    let isTransitioning = false; 
-    
-    slider.style.transform = `translateX(-100%)`;
-
-    function moveSlider(direction) {
-      if (isTransitioning) return; 
-      isTransitioning = true;
-      
-      currentSlide = currentSlide + direction;
-      
-      slider.style.transition = 'transform 0.4s ease-in-out';
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    slider.addEventListener('transitionend', () => {
-      isTransitioning = false;
-      
-      // 3张图的跳转判定（滑到第 4 个位置即假图一时，跳回 1）
-      if (currentSlide === 4) {
-        currentSlide = 1; 
-        slider.style.transition = 'none';
-        slider.style.transform = `translateX(-100%)`;
-      }
-      
-      // 3张图的跳转判定（滑到第 0 个位置即假图三时，跳回 3）
-      if (currentSlide === 0) {
-        currentSlide = 3; 
-        slider.style.transition = 'none';
-        slider.style.transform = `translateX(-300%)`;
-      }
-    });
-  </script>
 </body>
 </html>

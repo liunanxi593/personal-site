@@ -10,7 +10,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   color: #111;
-  background: #f7f7f3;
+  background: #ffffff; 
   line-height: 1.6;
 }
 
@@ -27,7 +27,7 @@ a:hover {
   max-width: 1320px;
   margin: 0 auto;
   padding: 34px 32px 80px 32px;
-  position: relative; /* 配合详情页的返回箭头定位 */
+  position: relative; 
 }
 
 /* =========================================
@@ -124,75 +124,127 @@ nav a:hover {
 }
 
 /* =========================================
-   4. 项目总览页 (Projects Page)
+   4. 项目主页：高级手风琴网格 (稳定修复版：居中放大 + 底部短箭头)
    ========================================= */
-.projects-page {
-  padding-top: 0;
+
+/* 1. 整体画廊外框 */
+.horizontal-accordion-gallery {
+  width: 100vw;
+  height: 90vh;          /* 撑起屏幕高度 */
+  overflow: hidden;
+  display: flex;
+  align-items: center;   /* 整体在屏幕垂直居中 */
+  justify-content: center; 
+  padding: 0 5vw;
+  box-sizing: border-box;
 }
 
-.projects-intro {
-  margin-bottom: 60px;
-}
-
-.projects-intro h2 {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 28px;
-}
-
-.projects-intro p {
-  max-width: 1200px;
-  font-size: 22px;
-  line-height: 1.6;
-  color: #111;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 56px 32px;
-}
-
-.project-card img {
+/* 2. 内部轨道：固定高度，作为上下锚点 */
+.project-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;   /* 【核心修复1】让内部所有项目垂直居中对齐，这是中心放大的基础 */
+  justify-content: flex-start;
+  gap: 1vw;
   width: 100%;
-  aspect-ratio: 1.2 / 1;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 22px;
-  border-radius: 8px; /* 给所有封面图加点圆角更和谐 */
+  height: 65vh;          /* 给定一个固定的容器高度 */
+  position: relative;
+  margin-top: 40px;      /* 【新增】让整体轨道及里面的图片统一往下移动 10px */
 }
 
-.project-card h3 {
-  font-size: 30px;
-  line-height: 1.15;
-  font-weight: 500;
-  margin-bottom: 18px;
+/* 3. 项目卡片 */
+.project-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 确保图片在卡片内部绝对居中 */
+  flex: 0 0 12vw;
+  height: 100%;            /* 撑满 65vh 的轨道高度 */
+  text-decoration: none;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 图片容器：中等圆角 */
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  border-radius: 5px;     /* 保留上一版的 10px 圆角 */
+  overflow: hidden; 
+  flex-shrink: 0;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: #f7f7f7;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%);
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
+}
+
+/* === 文字层：钉在顶部，绝不重叠 === */
+.project-info {
+  position: absolute;
+  top: -30px;                /* 死死钉在轨道的顶部边缘 */
+  left: 0;
+  opacity: 0;
+  transform: translateY(10px); 
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  white-space: nowrap;
+  width: max-content;
+  text-align: left;
+  z-index: 20;           /* 【新增】提高层级，保证它永远漂浮在放大的图片上方，绝对不被遮挡 */
+}
+
+/* === 悬停魔法：向四周中心放大 === */
+.project-item:hover {
+  flex: 0 0 35vw;
+}
+
+.project-item:hover .image-wrapper {
+  border-radius: 16px;
+}
+
+.project-item:hover .image-wrapper img {
+  filter: grayscale(0%);
+}
+
+.project-item:hover .project-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* 极致的文字层级控制 (保留你的高级设置) */
+.project-info .index {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.project-info .title {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;     
+  font-weight: 700;    
+  color: #111;         
+  margin: 0 0 8px 0;
   letter-spacing: -0.5px;
 }
 
-.project-title-link {
-  color: #3a4a3f;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.project-title-link:hover {
-  opacity: 0.6;
-}
-
-/* 统一了项目标签的样式 */
-.project-tags, .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.project-tags span, .tags span {
-  font-size: 16px;
-  color: #4f5f2f;
-  margin-right: 4px;
+.project-info .keywords {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;     
+  font-weight: 400;    
+  color: #888;         
+  margin: 0;
+  text-transform: uppercase; 
+  letter-spacing: 1.5px; 
 }
 
 /* =========================================
@@ -214,42 +266,38 @@ nav a:hover {
   text-align: left;
 }
 
-.project-hero {
-  width: 100%;
-  display: block;
-  border-radius: 14px;
-  margin-bottom: 54px;
-  object-fit: cover;
-}
-
+/* 杂志级高级分栏 (Grid 排版) */
 .project-section {
-  margin-bottom: 46px;
-  padding-top: 30px;
-  border-top: 1px solid #dcdcdc;
+  display: grid;
+  grid-template-columns: 160px 1fr; 
+  gap: 40px;             
+  margin-bottom: 100px;  
+  align-items: start;
 }
 
 .project-section h2 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;      
+  letter-spacing: 3px;   
   text-transform: uppercase;
-  color: #777;
-  margin-bottom: 14px;
+  color: #999;           
+  margin-top: 7px;       
+  margin-bottom: 0;
 }
 
 .project-section p {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
-  line-height: 1.9;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;       
+  line-height: 1.9;      
   color: #222;
-  max-width: 760px;
+  max-width: 680px;      
 }
 
 .back-link {
   position: absolute;
   top: 40px;
-  left: -20px; /* 【关键修改】原来是 60px，现在改成 10px，数字越小越靠左 */
+  left: -10px; 
   display: inline-block;
   font-size: 30px;
   color: #bbb;
@@ -261,15 +309,172 @@ nav a:hover {
   color: #666;
 }
 
-/* =========================================
-   6. 手机/平板自适应 (Responsive Design)
-   ========================================= */
-@media (max-width: 1100px) {
-  .project-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+/* 详情页图片 */
+.article-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; 
+  margin: 40px 0;      
+  display: block;
 }
 
+/* =========================================
+   6. 详情页互动组件 (Hover Cards)
+   ========================================= */
+
+/* A. 隐藏文字卡片通用属性 */
+.card-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.95); 
+  padding: 16px 10px; 
+  border-radius: 12px;
+  transform: translateY(120%); 
+  opacity: 0;                  
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  text-align: center; 
+}
+
+.hover-card:hover .card-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-info span {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;       
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1.5px; 
+  margin-bottom: 4px;
+}
+
+.card-info h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;       
+  font-weight: 400;      
+  color: #222;
+  margin-bottom: 8px;
+  margin-top: 0;
+  white-space: nowrap;   
+}
+
+.card-info a {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #777;           
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card-info a:hover {
+  color: #111;
+}
+
+/* B. 三张卡片排列 */
+.hover-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px;         
+  margin-top: 40px;  
+  width: 100%;
+}
+
+.hover-cards-wrapper .hover-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;      
+  aspect-ratio: 1 / 1;   
+  cursor: pointer;
+  background-color: #eee; 
+}
+
+.hover-cards-wrapper .hover-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.hover-cards-wrapper .hover-card:hover img {
+  transform: scale(1.08); 
+}
+
+/* C. 单张卡片居中排列 */
+.single-card-wrapper {
+  margin-top: 60px;        
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+}
+
+.single-card-wrapper .hover-card {
+  width: 100%;
+  max-width: 500px;       
+  height: auto !important; 
+  aspect-ratio: auto !important; 
+  background-color: transparent !important; 
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+}
+
+.single-card-wrapper .hover-card img {
+  width: 100%;
+  height: auto !important; 
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.single-card-wrapper .hover-card:hover img {
+  transform: scale(1.05); 
+}
+
+/* D. 两张卡片并排排列 */
+.two-cards-wrapper {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 40px; 
+  width: 100%;
+}
+
+.two-cards-wrapper .hover-card {
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  background-color: transparent !important;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.two-cards-wrapper .hover-card img {
+  width: 100%;
+  height: auto !important;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.two-cards-wrapper .hover-card:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================================
+   7. 移动端适配 (Responsive)
+   ========================================= */
 @media (max-width: 1000px) {
   .about-page {
     grid-template-columns: 1fr;
@@ -280,22 +485,29 @@ nav a:hover {
     max-width: 100%;
   }
   .back-link {
-    position: static; /* 手机上取消绝对定位，避免重叠 */
+    position: static; 
     margin-bottom: 20px;
   }
 }
 
-@media (max-width: 700px) {
-  .project-grid {
+@media (max-width: 800px) {
+  .hover-cards-wrapper {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
-  
-  .projects-intro p {
-    font-size: 18px;
+  .two-cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
-  
-  .project-card h3 {
-    /* 这里需要添加你想改变的属性，比如字体大小 */
-    font-size: 24px; 
+}
+
+@media (max-width: 700px) {
+  .project-section {
+    grid-template-columns: 1fr; 
+    gap: 16px;
+    margin-bottom: 60px;
   }
-} /* 注意这里要有一个闭合媒体查询的大括号 */
+  .project-section h2 {
+    margin-top: 0;
+  }
+}
