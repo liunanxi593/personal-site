@@ -6,6 +6,12 @@
   <title>Nancy Liu | Projects</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 鼠标变成小手 */
+    .project-hover-img {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,76 +26,100 @@
       </nav>
     </header>
 
-    <main class="projects-page" style="width: 100vw; overflow: hidden; height: auto; padding: 0;">
-      <div class="project-track">
+    <main class="projects-page">
 
-        <a href="project-ai.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">AnxiPuzzle</h2>
-            <p class="keywords">Affective Interaction / Tangible Interface</p>
-          </div>
-          <div class="image-wrapper">
+      <section class="projects-intro">
+        <h2>RESEARCH PROJECTS</h2>
+        <p>
+          How can we use visual, material, and physical interaction to translate abstract emotional and cognitive states into perceivable and actionable experiences?
+        </p>
+      </section>
+
+      <section class="project-grid">
+
+        <a href="project-ai.html" class="project-card">
+          <div class="project-image">
             <img class="project-hover-img" src="ai-puzzle.jpg" data-img1="ai-puzzle.jpg" data-img2="ai-gallery-1.jpg" data-img3="ai-gallery-2.jpg" alt="AnxiPuzzle" />
           </div>
-        </a>
-
-        <a href="project-intergenerational.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">Intergenerational Communication Design</h2>
-            <p class="keywords">ASR / Ambient Feedback / Emotional Arousal</p>
-          </div>
-          <div class="image-wrapper">
-            <img src="intergenerational.jpg" alt="Intergenerational Design" />
+          <div class="project-text">
+            <h3>AnxiPuzzle</h3>
+            <div class="project-tags">
+              <span>Affective Interaction</span>
+              <span>Tangible Interface</span>
+            </div>
           </div>
         </a>
 
-        <a href="project-planter.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">Hydrochromic Interactive Planter</h2>
-            <p class="keywords">Material Interaction / Visualization</p>
+        <a href="project-intergenerational.html" class="project-card">
+          <div class="project-image">
+            <img src="intergenerational.jpg" alt="Intergenerational Communication Design" />
           </div>
-          <div class="image-wrapper">
+          <div class="project-text">
+            <h3>Intergenerational Communication Design</h3>
+            <div class="project-tags">
+              <span>Automatic Speech Recognition</span>
+              <span>Ambient Feedback</span>
+              <span>Emotional Arousal</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="project-planter.html" class="project-card">
+          <div class="project-image">
             <img class="project-hover-img" src="planter.jpg" data-img1="planter.jpg" data-img2="planter-gallery-1.jpg" data-img3="planter.jpg" alt="Planter" />
           </div>
+          <div class="project-text">
+            <h3>Hydrochromic Interactive Planter</h3>
+            <div class="project-tags">
+              <span>Material Interaction</span>
+              <span>Visualization</span>
+            </div>
+          </div>
         </a>
 
-        <a href="project-app.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">Campus Second-hand Trading App</h2>
-            <p class="keywords">UI/UX / Material Interaction / Real-Time Feedback</p>
-          </div>
-          <div class="image-wrapper">
+        <a href="project-app.html" class="project-card">
+          <div class="project-image">
             <img class="project-hover-img" src="app.jpg" data-img1="app.jpg" data-img2="app-gallery-1.jpg" data-img3="app.jpg" alt="App" />
           </div>
+          <div class="project-text">
+            <h3>Campus Second-hand Trading App</h3>
+            <div class="project-tags">
+              <span>UI/UX</span>
+              <span>Material Interaction</span>
+              <span>Real-Time Feedback</span>
+            </div>
+          </div>
         </a>
 
-        <a href="project-autism.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">Autism Support Design</h2>
-            <p class="keywords">Play-Based Therapy / Sensory Interaction</p>
-          </div>
-          <div class="image-wrapper">
+        <a href="project-autism.html" class="project-card">
+          <div class="project-image">
             <img class="project-hover-img" src="autism.jpg" data-img1="autism.jpg" data-img2="autism-gallery-1.jpg" data-img3="autism-gallery-2.jpg" alt="Autism Support" />
           </div>
+          <div class="project-text">
+            <h3>Autism Support Design</h3>
+            <div class="project-tags">
+              <span>Play-Based Therapy</span>
+              <span>Sensory Interaction</span>
+              <span>Visual Communication</span>
+            </div>
+          </div>
         </a>
 
-        <a href="project-threebody.html" class="project-item">
-          <div class="project-info">
-            <span class="index"></span>
-            <h2 class="title">The Three-Body Problem Re-Design</h2>
-            <p class="keywords">Spatial Narrative / Book Design / Perceptual Experience</p>
-          </div>
-          <div class="image-wrapper">
+        <a href="project-threebody.html" class="project-card">
+          <div class="project-image">
             <img class="project-hover-img" src="threebody.jpg" data-img1="threebody.jpg" data-img2="threebody-gallery-1.jpg" data-img3="threebody-gallery-2.jpg" alt="Three-Body" />
           </div>
+          <div class="project-text">
+            <h3>The Three-Body Problem Re-Design</h3>
+            <div class="project-tags">
+              <span>Spatial Narrative</span>
+              <span>Book Design</span>
+              <span>Perceptual Experience</span>
+            </div>
+          </div>
         </a>
 
-      </div>
+      </section>
     </main>
 
   </div>
@@ -102,21 +132,18 @@
       let currentIndex = 1;
 
       img.addEventListener('mouseenter', () => {
-        // 当鼠标进入已展开的卡片，开始轮播
         hoverTimer = setInterval(() => {
           currentIndex++;
           if (currentIndex > 3) { currentIndex = 1; }
           const nextImgSrc = img.getAttribute('data-img' + currentIndex);
-          if(nextImgSrc) {
-            img.src = nextImgSrc;
-          }
+          if(nextImgSrc) { img.src = nextImgSrc; }
         }, 1500); 
       });
 
       img.addEventListener('mouseleave', () => {
-        clearInterval(hoverTimer); // 鼠标离开，停止轮播
+        clearInterval(hoverTimer); 
         currentIndex = 1; 
-        img.src = img.getAttribute('data-img1'); // 恢复到第一张图
+        img.src = img.getAttribute('data-img1'); 
       });
     });
   </script>

@@ -124,131 +124,132 @@ nav a:hover {
 }
 
 /* =========================================
-   4. 项目主页：高级手风琴网格 (稳定修复版：居中放大 + 底部短箭头)
+   4. 项目总览页 (摄影画廊高级网格版)
    ========================================= */
 
-/* 1. 整体画廊外框 */
-.horizontal-accordion-gallery {
-  width: 100vw;
-  height: 90vh;          /* 撑起屏幕高度 */
-  overflow: hidden;
-  display: flex;
-  align-items: center;   /* 整体在屏幕垂直居中 */
-  justify-content: center; 
-  padding: 0 5vw;
-  box-sizing: border-box;
+.projects-page {
+  padding-top: 20px;
+  max-width: 1320px;     /* 【修改1】放宽整体最大宽度，给3列项目和单行长文字留出充足空间 */
+  margin: 0 auto;        /* 保证整个页面在屏幕正中间，左右边距绝对相等 */
 }
 
-/* 2. 内部轨道：固定高度，作为上下锚点 */
-.project-track {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;   /* 【核心修复1】让内部所有项目垂直居中对齐，这是中心放大的基础 */
-  justify-content: flex-start;
-  gap: 1vw;
-  width: 100%;
-  height: 65vh;          /* 给定一个固定的容器高度 */
-  position: relative;
-  margin-top: 40px;      /* 【新增】让整体轨道及里面的图片统一往下移动 10px */
+/* === 顶部介绍 === */
+.projects-intro {
+  margin-bottom: 80px;   
+  text-align: left;      /* 确保整个区块靠左 */
 }
 
-/* 3. 项目卡片 */
-.project-item {
-  position: relative;
+.projects-intro h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #999;           
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.projects-intro p {
+  font-family: 'Inter', sans-serif;
+  font-size: 19px;       
+  line-height: 1.7;
+  color: #222;
+  max-width: 100%;       
+  margin: 0;             
+  text-align: left;      /* 【核心修改】段落文本左对齐，自然随性 */
+}
+
+/* === 核心摄影网格布局 === */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 【修改4】改成一行放 3 个项目 */
+  gap: 80px 3vw;         /* 适配三列的间距：上下距离 80px，左右距离 3vw */
+}
+
+.project-card {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 确保图片在卡片内部绝对居中 */
-  flex: 0 0 12vw;
-  height: 100%;            /* 撑满 65vh 的轨道高度 */
+  cursor: pointer;
   text-decoration: none;
-  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* 图片容器：中等圆角 */
-.image-wrapper {
+/* === 图片设定 === */
+.project-image {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  height: auto;
-  border-radius: 5px;     /* 保留上一版的 10px 圆角 */
-  overflow: hidden; 
-  flex-shrink: 0;
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  background-color: #f7f7f7;
+  aspect-ratio: 4 / 3;   
+  overflow: hidden;
+  border-radius: 6px;    
+  margin-bottom: 24px;   
+  background-color: #f5f5f5;
 }
 
-.image-wrapper img {
+.project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(20%);
-  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  display: block;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
-/* === 文字层：钉在顶部，绝不重叠 === */
-.project-info {
-  position: absolute;
-  top: -50px;                /* 死死钉在轨道的顶部边缘 */
-  left: 0;
-  opacity: 0;
-  transform: translateY(10px); 
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  white-space: nowrap;
-  width: max-content;
-  text-align: left;
-  z-index: 20;           /* 【新增】提高层级，保证它永远漂浮在放大的图片上方，绝对不被遮挡 */
+.project-card:hover .project-image img {
+  transform: scale(1.04); 
 }
 
-/* === 悬停魔法：向四周中心放大 === */
-.project-item:hover {
-  flex: 0 0 35vw;
+/* === 文字设定 === */
+.project-text {
+  display: flex;
+  flex-direction: column;
 }
 
-.project-item:hover .image-wrapper {
-  border-radius: 16px;
-}
-
-.project-item:hover .image-wrapper img {
-  filter: grayscale(0%);
-}
-
-.project-item:hover .project-info {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* 极致的文字层级控制 (保留你的高级设置) */
-.project-info .index {
-  display: block;
+.project-text h3 {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  font-size: 20px;       /* 三列排布下，标题字号设为20px最精致 */
   font-weight: 600;
-  color: #111;
-  margin-bottom: 8px;
-}
-
-.project-info .title {
-  font-family: 'Inter', sans-serif;
-  font-size: 26px;     
-  font-weight: 700;    
-  color: #111;         
-  margin: 0 0 8px 0;
+  color: #1a1a1a;        
+  margin: 0 0 12px 0;
   letter-spacing: -0.5px;
+  transition: color 0.3s ease;
 }
 
-.project-info .keywords {
+.project-card:hover .project-text h3 {
+  color: #6b7c5a;        
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-tags span {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;     
-  font-weight: 400;    
-  color: #888;         
-  margin: 0;
-  text-transform: uppercase; 
-  letter-spacing: 1.5px; 
+  font-size: 13px;       /* 关键词字号稍微缩小，配合三列布局 */
+  font-weight: 400;
+  color: #888888;        
+  letter-spacing: 0.5px;
 }
 
 /* =========================================
-   5. 项目详情页 (Project Detail Page)
+   5. 手机端自适应 (Responsive Design)
+   ========================================= */
+@media (max-width: 1000px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* 平板屏幕变成两列 */
+    gap: 60px 4vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .project-grid {
+    grid-template-columns: 1fr; /* 手机上变成单列 */
+    gap: 60px;
+  }
+  .projects-intro p {
+    font-size: 16px; /* 手机端字体缩小 */
+  }
+}
+
+/* =========================================
+   6. 项目详情页 (Project Detail Page)
    ========================================= */
 .project-detail {
   max-width: 800px;
