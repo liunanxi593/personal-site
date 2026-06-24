@@ -320,7 +320,7 @@ nav a:hover {
 }
 
 /* =========================================
-   6. 详情页互动组件 (Hover Cards)
+   7. 详情页互动组件 (Hover Cards)
    ========================================= */
 
 /* A. 隐藏文字卡片通用属性 */
@@ -329,17 +329,20 @@ nav a:hover {
   bottom: 15px;
   left: 15px;
   right: 15px;
-  background: rgba(255, 255, 255, 0.95); 
-  padding: 16px 10px; 
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px 10px;
   border-radius: 12px;
-  transform: translateY(120%); 
-  opacity: 0;                  
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  text-align: center; 
+  text-align: center;
+  z-index: 5;
 }
 
-.hover-card:hover .card-info {
+/* 普通 hover-card 和 planter-media-item 都能触发文字浮现 */
+.hover-card:hover .card-info,
+.planter-media-item:hover .card-info {
   transform: translateY(0);
   opacity: 1;
 }
@@ -347,29 +350,28 @@ nav a:hover {
 .card-info span {
   display: block;
   font-family: 'Inter', sans-serif;
-  font-size: 10px;       
+  font-size: 10px;
   font-weight: 500;
   color: #888;
   text-transform: uppercase;
-  letter-spacing: 1.5px; 
+  letter-spacing: 1.5px;
   margin-bottom: 4px;
 }
 
 .card-info h3 {
   font-family: 'Inter', sans-serif;
-  font-size: 15px;       
-  font-weight: 400;      
+  font-size: 15px;
+  font-weight: 400;
   color: #222;
-  margin-bottom: 8px;
-  margin-top: 0;
-  white-space: nowrap;   
+  margin: 0;
+  white-space: nowrap;
 }
 
 .card-info a {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: #777;           
+  color: #777;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -378,75 +380,78 @@ nav a:hover {
   color: #111;
 }
 
-/* B. 三张卡片排列 */
+
+/* B. 四张卡片排列：AI 项目等使用 */
 .hover-cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 24px;         
-  margin-top: 40px;  
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
   width: 100%;
 }
 
 .hover-cards-wrapper .hover-card {
   position: relative;
   border-radius: 16px;
-  overflow: hidden;      
-  aspect-ratio: 1 / 1;   
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
   cursor: pointer;
-  background-color: #eee; 
+  background-color: #eee;
 }
 
 .hover-cards-wrapper .hover-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hover-cards-wrapper .hover-card:hover img {
-  transform: scale(1.08); 
+  transform: scale(1.08);
 }
+
 
 /* C. 单张卡片居中排列 */
 .single-card-wrapper {
-  margin-top: 60px;        
+  margin-top: 60px;
   margin-bottom: 60px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
 }
 
 .single-card-wrapper .hover-card {
   width: 100%;
-  max-width: 500px;       
-  height: auto !important; 
-  aspect-ratio: auto !important; 
-  background-color: transparent !important; 
+  max-width: 500px;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  background-color: transparent !important;
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .single-card-wrapper .hover-card img {
   width: 100%;
-  height: auto !important; 
+  height: auto !important;
   display: block;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .single-card-wrapper .hover-card:hover img {
-  transform: scale(1.05); 
+  transform: scale(1.05);
 }
+
 
 /* D. 两张卡片并排排列 */
 .two-cards-wrapper {
   margin-top: 60px;
   margin-bottom: 60px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 40px; 
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   width: 100%;
 }
 
@@ -473,8 +478,182 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+/* AI project detail images: make this row larger but keep it centered */
+.ai-hover-cards {
+  width: min(1000px, calc(100vw - 180px));
+  margin-left: 50%;
+  transform: translateX(-50%);
+  gap: 28px;
+  margin-top: 72px;
+  margin-bottom: 80px;
+}
+
+
 /* =========================================
-   7. 移动端适配 (Responsive)
+   Planter project media row
+   四组图片直接排开，不使用横向滚动
+   高度一致，宽度根据图片比例自然变化
+   ========================================= */
+
+.planter-media-row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 60px auto 70px auto;
+
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+/* 每一组图片 */
+.planter-media-item {
+  position: relative;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+/* 每一组图片的外框：高度统一，宽度由图片内容决定 */
+.planter-media-frame {
+  height: 240px;
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f6f6f6;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* 普通图片：高度统一，宽度按原图比例 */
+.planter-media-frame > img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 普通图片 hover 轻微放大 */
+.planter-media-item:hover .planter-media-frame > img {
+  transform: scale(1.04);
+}
+
+/* =========================================
+   Planter 第三组：五张图自动循环
+   宽度由第一张图决定，不再强行给大盒子
+   ========================================= */
+
+.cycle-frame {
+  width: fit-content;
+}
+
+/* 第三组内部容器 */
+.planter-cycle {
+  position: relative;
+  height: 100%;
+  width: fit-content;
+}
+
+/* 第一张图作为尺寸基准：它决定第三组整体宽度 */
+.planter-cycle img:first-child {
+  position: relative;
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  opacity: 0;
+  animation: planterCycle5 15s infinite;
+  animation-delay: 0s;
+}
+
+/* 其余四张图叠在第一张图上 */
+.planter-cycle img:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+
+  object-fit: contain;
+  transform: translateX(-50%);
+  opacity: 0;
+
+  animation: planterCycle5 15s infinite;
+}
+
+/* 每张图间隔 3 秒 */
+.planter-cycle img:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.planter-cycle img:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.planter-cycle img:nth-child(4) {
+  animation-delay: 9s;
+}
+
+.planter-cycle img:nth-child(5) {
+  animation-delay: 12s;
+}
+
+/* 五张图循环：每张显示约 3 秒 */
+@keyframes planterCycle5 {
+  0% {
+    opacity: 0;
+  }
+
+  4% {
+    opacity: 1;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  22% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* 小屏幕适配：防止四组图在手机上太挤 */
+@media (max-width: 900px) {
+  .hover-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .planter-media-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .hover-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .planter-media-frame {
+    height: 220px;
+  }
+}
+
+/* =========================================
+   8. 移动端适配 (Responsive)
    ========================================= */
 @media (max-width: 1000px) {
   .about-page {
@@ -510,5 +689,24 @@ nav a:hover {
   }
   .project-section h2 {
     margin-top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hover-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hover-cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .planter-media-row {
+    width: 100%;
+    flex-wrap: wrap;
   }
 }
