@@ -44,7 +44,14 @@
       <section class="project-section">
         <h2>Approach</h2>
         <p>
-          This project proposes a serious game in the form of a tangible graphic puzzle. Anxiety-related emotions are translated through affective computing into a visual puzzle experience, allowing users to engage with emotion through physical interaction. After the puzzle is completed, the system also generates a story to help users further process and alleviate the corresponding emotion.
+           This project proposes a serious game in the form of a tangible graphic puzzle. Anxiety-related emotions are translated through affective computing into a visual puzzle experience, allowing users to engage with emotion through physical interaction. After the puzzle is completed, the system can generate a story to help users further process and alleviate the corresponding emotion.
+        </p>
+      </section>
+
+      <section class="project-section">
+        <h2>Technical Prototype</h2>
+        <p>
+           I developed the prototype as an end-to-end workflow from emotional text input to physical image display. The system classifies anxiety-related text, generates an abstract visual pattern, saves it as an input image, and uses a Flask service to split the image into tiles that ESP32 modules can retrieve through routes such as <code>/tile/1</code> to <code>/tile/4</code>. This process allowed me to practice API integration, image processing, local server configuration, and hardware-software communication within one interactive system.
         </p>
       </section>
 
@@ -63,6 +70,19 @@
            <h3>Software Debug</h3>
          </div>
        </div>
+
+      <div class="hover-card ai-cycle-card">
+        <div class="ai-cycle">
+          <img src="ai-cycle-1.jpg" alt="AI puzzle process 1">
+          <img src="ai-cycle-2.jpg" alt="AI puzzle process 2">
+          <img src="ai-cycle-3.jpg" alt="AI puzzle process 3">
+          <img src="ai-cycle-4.jpg" alt="AI puzzle process 4">
+        </div>
+
+        <div class="card-info">
+          <h3>Text-to-Image API Call</h3>
+       </div>
+      </div>
 
       <div class="hover-card">
         <img src="ai-gallery-4.jpg" alt="Software Testing">

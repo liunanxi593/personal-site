@@ -653,6 +653,89 @@ nav a:hover {
 }
 
 /* =========================================
+   AI project: five-card detail row
+   ========================================= */
+
+.ai-hover-cards {
+  grid-template-columns: repeat(5, 1fr);
+  width: min(1280px, calc(100vw - 120px));
+  margin-left: 50%;
+  transform: translateX(-50%);
+  gap: 26px;
+}
+
+/* =========================================
+   AI project: 4-image auto cycle card
+   ========================================= */
+
+.ai-cycle-card {
+  position: relative;
+}
+
+.ai-cycle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 轮播里的图片要覆盖整个卡片 */
+.ai-cycle img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: aiCycle4 12s infinite;
+  transform: none;
+}
+
+/* 每张图间隔 3 秒出现 */
+.ai-cycle img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.ai-cycle img:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.ai-cycle img:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.ai-cycle img:nth-child(4) {
+  animation-delay: 9s;
+}
+
+/* 防止 hover-card 原来的 img 放大效果影响轮播图 */
+.ai-cycle-card:hover .ai-cycle img {
+  transform: none;
+}
+
+/* 4张图自动循环：每张约3秒 */
+@keyframes aiCycle4 {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  23% {
+    opacity: 1;
+  }
+
+  28% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================================
    8. 移动端适配 (Responsive)
    ========================================= */
 @media (max-width: 1000px) {
