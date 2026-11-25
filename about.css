@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/* About only. Large pale fields, compact dark accents, and equal paragraph markers. */
+.about-home .about-introduction{padding:66px 0 0}
+.about-home .about-opening{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:70px;align-items:stretch;margin:0 0 64px}
+.about-home .about-portrait{max-width:350px;margin:0}
+.about-home .about-portrait img{width:100%;height:auto;filter:none}
+.about-home .about-heading{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:100px 0 44px;isolation:isolate}
+.about-home .about-heading>.eyebrow{font-size:14px;letter-spacing:.09em;position:relative}
+.about-home .about-heading h1{position:relative;max-width:780px;font-size:clamp(42px,4.7vw,66px);font-weight:500;line-height:1.07;letter-spacing:-.06em;margin:22px 0 0}
+.about-home .about-graphic{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.about-home .about-disc{position:absolute;top:-20px;right:-12px;display:block;width:340px;height:340px;background:#eff3fb;border-radius:50%}
+.about-home .about-glyph{position:absolute;top:18px;right:8px;display:block;width:44px;height:36px;color:#5884b8}
+.about-home .about-story{display:grid}
+.about-home .about-paragraph{display:flex;align-items:flex-start;gap:34px;padding:32px 0;border-top:1px solid #d4d4d4}
+.about-home .paragraph-mark{display:block;flex:0 0 20px;height:20px;margin-top:7px;background:#5884b8}
+.about-home .about-paragraph:nth-child(even){flex-direction:row-reverse}
+.about-home .about-paragraph>p{width:100%;max-width:770px;font-size:18px;line-height:1.8;margin:0}
+.about-home .about-paragraph strong{font-weight:700;color:var(--heading-ink)}
+.about-home .about-tools{display:grid;grid-template-columns:160px minmax(0,1fr);gap:32px;padding:30px 0 64px;border-top:1px solid #d4d4d4}
+.about-home .about-tools h2{font-size:14px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;line-height:1.8;margin:0}
+.about-home .about-tools ul{display:flex;flex-wrap:wrap;gap:10px 28px;list-style:none;padding:0;margin:0;max-width:850px}
+.about-home .about-tools li{font-size:15px;line-height:1.7;color:#98afd3}
+@media(max-width:1000px){.about-home .about-opening{gap:44px}.about-home .about-heading h1{font-size:48px}.about-home .about-disc{width:280px;height:280px}.about-home .about-paragraph>p{max-width:680px}}
+@media(max-width:760px){
+ .about-home .about-introduction{padding-top:48px}
+ .about-home .about-opening{gap:28px;margin-bottom:44px}
+ .about-home .about-heading{padding:74px 0 20px}
+ .about-home .about-heading h1{font-size:clamp(32px,6.7vw,46px);margin-top:18px}
+ .about-home .about-disc{top:-8px;width:220px;height:220px}
+ .about-home .about-glyph{top:10px;right:4px;width:36px;height:30px}
+ .about-home .about-paragraph{gap:24px;padding:27px 0}
+ .about-home .paragraph-mark{flex-basis:16px;height:16px;margin-top:7px}
+ .about-home .about-paragraph>p{font-size:17px;line-height:1.8}
+ .about-home .about-tools{grid-template-columns:90px minmax(0,1fr);gap:20px;padding-bottom:48px}
+ .about-home .about-tools ul{gap:8px 20px}
+}
+@media(max-width:560px){
+ .about-home .about-opening{grid-template-columns:1fr;gap:30px;margin-bottom:40px}
+ .about-home .about-portrait{max-width:260px}
+ .about-home .about-heading{padding:0 0 8px}
+ .about-home .about-heading h1{font-size:clamp(40px,10vw,52px)}
+ .about-home .about-disc{top:20px;right:-10px;width:180px;height:180px}
+ .about-home .about-glyph{top:0;right:0;width:32px;height:27px}
+ .about-home .about-paragraph{gap:20px}
+ .about-home .about-tools{grid-template-columns:1fr;gap:17px}
+}

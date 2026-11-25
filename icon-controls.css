@@ -1,0 +1,12 @@
+
+.ui-icon{width:24px;height:24px;display:block;flex:none;pointer-events:none}
+.ui-icon-control{display:inline-flex!important;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;padding:0!important;border:0!important;background:transparent;color:#5884b8;line-height:1;text-decoration:none!important;vertical-align:middle;flex:none;cursor:pointer;transition:background-color .15s ease}
+.ui-icon-control:hover{background:#eaf0fa;color:#5884b8}.ui-icon-control:focus-visible{outline:2px solid #5884b8;outline-offset:3px}
+.back.ui-icon-control,.back-link.ui-icon-control{margin-left:-12px;margin-bottom:0}
+.footer-links{display:flex;align-items:center;gap:12px}.footer-links .ui-icon-control:hover{text-decoration:none}
+.next-project a{display:inline-flex;align-items:center;gap:22px}.next-project a .ui-icon{width:26px;height:26px}
+.viewer-toolbar .ui-icon-control{padding:0!important;border:0!important;font-size:0}.viewer-toolbar .ui-icon-control:hover{background:#e7eef9}.viewer-toolbar>div{gap:10px}
+.slider-btn.ui-icon-control{width:44px!important;height:44px!important;background:rgba(255,255,255,.94)!important;color:#5884b8!important;border:1px solid rgba(0,0,0,.12)!important;padding:0!important;border-radius:0!important}.slider-btn.ui-icon-control:hover{background:#fff!important}
+@media(prefers-reduced-motion:reduce){.ui-icon-control{transition:none}}
+
+.site-footer .footer-links{margin-left:auto}
