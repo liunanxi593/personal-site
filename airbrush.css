@@ -211,7 +211,7 @@
 
 .airbrush-study .about-paragraph > p {
   font-family: "Reference Hand", "Papyrus", Georgia, serif;
-  font-size: 21px;
+  font-size: 14px;
   line-height: 1.75;
   letter-spacing: .003em;
   font-weight: 400;
@@ -274,7 +274,7 @@
 
 @media (max-width: 760px) {
   .airbrush-study .about-paragraph > p {
-    font-size: 20px;
+    font-size: 13.333px;
     line-height: 1.72;
   }
 
@@ -315,7 +315,7 @@
   }
 
   .airbrush-study .about-paragraph > p {
-    font-size: 19px;
+    font-size: 12.667px;
     line-height: 1.76;
   }
 }
