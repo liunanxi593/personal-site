@@ -1,0 +1,321 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Reference Hand";
+  src: local("Papyrus"), url("assets/macondo.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.airbrush-study {
+  --edge-disc-size: 320px;
+  --ink: #666b79;
+  --heading-ink: #546d92;
+  --muted: #858d9c;
+  --line: #e2e6ee;
+  --blue: #b5ccf5;
+  --pink: #f1bfd5;
+  --yellow: #f7e99e;
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.2' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: #fff;
+  color: var(--ink);
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+}
+
+.airbrush-study .site-header {
+  border-bottom-color: #d8e1ee;
+}
+
+.airbrush-study .wordmark {
+  color: #718bb2;
+}
+
+.airbrush-study .wordmark-art {
+  display: block;
+  width: 154px;
+  height: auto;
+}
+
+.airbrush-study .wordmark::before {
+  border-radius: 2px;
+  background: transparent;
+  border: 1px solid #abc3eb;
+  box-shadow: inset 0 0 3px #b1c9ee, 0 0 1px #d4e1f7;
+}
+
+.airbrush-study .site-nav {
+  color: #7e8798;
+  font-family: "Reference Hand", "Papyrus", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.airbrush-study .site-nav a[aria-current="page"] {
+  color: #657fa9;
+}
+
+.airbrush-study .site-nav a:hover {
+  color: #bd89a6;
+}
+
+.airbrush-study .about-heading > .eyebrow {
+  color: #8492aa;
+}
+
+.airbrush-study .about-introduction {
+  padding-top: 94px;
+}
+
+.airbrush-study .about-heading h1 {
+  width: 100%;
+  line-height: 0;
+}
+
+.airbrush-study .about-heading h1 picture {
+  display: block;
+  width: 100%;
+}
+
+.airbrush-title-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+.title-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The circle's centre lies on the viewport edge, revealing its right half. */
+.airbrush-study .about-disc {
+  background: radial-gradient(circle closest-side,
+    #9eb8ed00 0 57%,
+    #9eb8ed0a 63%,
+    #9eb8ed39 74%,
+    #a2b9ec8f 85%,
+    #a3bbeeeb 94%,
+    #a3bbeef5 97%,
+    #a3bbee00 100%);
+  filter: blur(1.1px);
+  opacity: .44;
+}
+
+.airbrush-study .about-portrait img {
+  position: relative;
+  z-index: 1;
+}
+
+.airbrush-study .about-portrait {
+  position: relative;
+  isolation: isolate;
+}
+
+.airbrush-study .portrait-disc {
+  position: absolute;
+  width: calc(var(--edge-disc-size) / 3);
+  height: calc(var(--edge-disc-size) / 3);
+  left: 100%;
+  right: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.airbrush-study .edge-disc {
+  position: absolute;
+  width: var(--edge-disc-size);
+  height: var(--edge-disc-size);
+  left: calc(var(--edge-disc-size) * -.5);
+  right: auto;
+  top: 260px;
+  bottom: auto;
+  opacity: .35;
+  z-index: -1;
+}
+
+.airbrush-study .about-disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: var(--grain);
+  background-size: 130px;
+  opacity: .45;
+  mix-blend-mode: multiply;
+  mask-image: radial-gradient(circle, #0000 47%, #000 64% 84%, #0000 96%);
+  -webkit-mask-image: radial-gradient(circle, #0000 47%, #000 64% 84%, #0000 96%);
+}
+
+.airbrush-glyph {
+  display: block;
+  position: absolute;
+  width: 89px;
+  height: 91px;
+  right: 5px;
+  top: 9px;
+}
+
+.airbrush-glyph > span {
+  position: absolute;
+  display: block;
+}
+
+.glyph-square {
+  width: 49px;
+  height: 49px;
+  right: 11px;
+  top: 27px;
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid #a4bde9;
+  box-shadow: inset 0 0 12px #a4bde9, 0 0 1px #c7d8f4;
+  transform: rotate(8deg);
+  opacity: .78;
+}
+
+.glyph-triangle {
+  width: 35px;
+  height: 43px;
+  top: 0;
+  left: 1px;
+  background: url("assets/airbrush-triangle.svg") center / contain no-repeat;
+  opacity: .88;
+}
+
+.glyph-dot {
+  width: 18px;
+  height: 18px;
+  right: 0;
+  top: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, #edda8900 0 36%, #edda8940 57%, #edda89e6 88%, #edda8900 100%);
+  filter: blur(.3px);
+  opacity: .9;
+}
+
+.airbrush-study .about-paragraph {
+  border-top-color: var(--line);
+}
+
+.airbrush-study .about-paragraph > p {
+  font-family: "Reference Hand", "Papyrus", Georgia, serif;
+  font-size: 21px;
+  line-height: 1.75;
+  letter-spacing: .003em;
+  font-weight: 400;
+  color: #666775;
+}
+
+.airbrush-study .about-paragraph strong {
+  color: #556d8f;
+  font-weight: 700;
+}
+
+/* Equal paragraph markers, with the original left / right / left alignment. */
+.airbrush-study .paragraph-mark {
+  --mark-light: #f3f8ff;
+  --mark-edge: #aac6ee;
+  --mark-mid: #c6dcf7;
+  position: relative;
+  margin-top: 9px;
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid var(--mark-edge);
+  box-shadow: inset 0 0 6px var(--mark-edge), 0 0 1px var(--mark-mid);
+}
+
+.airbrush-study .about-paragraph:nth-child(2) .paragraph-mark {
+  --mark-light: #fff2f8;
+  --mark-edge: #e3acc8;
+  --mark-mid: #f1c8dc;
+}
+
+.airbrush-study .about-paragraph:nth-child(3) .paragraph-mark {
+  --mark-light: #fffdf1;
+  --mark-edge: #e9d986;
+  --mark-mid: #f6ebaf;
+}
+
+.airbrush-study .about-tools {
+  position: relative;
+  border-top-color: var(--line);
+}
+
+.airbrush-study .about-tools h2 {
+  position: relative;
+  color: #8890a0;
+}
+
+.airbrush-study .about-tools li {
+  color: #7e8ba4;
+}
+
+.airbrush-study .site-footer {
+  border-top-color: var(--line);
+  color: #8799b7;
+}
+
+.airbrush-study ::selection {
+  background: #e2eafb;
+  color: #455b7e;
+}
+
+@media (max-width: 760px) {
+  .airbrush-study .about-paragraph > p {
+    font-size: 20px;
+    line-height: 1.72;
+  }
+
+  .airbrush-glyph {
+    transform: scale(.8);
+    transform-origin: top right;
+    top: 7px;
+    right: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .airbrush-study {
+    --edge-disc-size: 240px;
+  }
+
+  .airbrush-study .about-introduction {
+    padding-top: 76px;
+  }
+
+  .airbrush-study .wordmark-art {
+    width: 130px;
+  }
+
+  .airbrush-study .site-nav {
+    font-size: 19px;
+    gap: 20px;
+  }
+
+  .airbrush-study .edge-disc {
+    top: 240px;
+    opacity: .28;
+  }
+
+  .airbrush-glyph {
+    transform: scale(.58);
+    top: -24px;
+  }
+
+  .airbrush-study .about-paragraph > p {
+    font-size: 19px;
+    line-height: 1.76;
+  }
+}

@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* Shared project finish: the approved About typography and pastel palette. */
+.project-study {
+  --ink: #666b79;
+  --heading-ink: #546d92;
+  --muted: #98a6bc;
+  --line: #e2e6ee;
+  --soft: #f0f4fc;
+}
+
+.project-study a { color: inherit; }
+.project-study .site-nav a[aria-current="page"] { color: #657fa9; }
+.project-study .site-nav a:hover { color: #bd89a6; }
+.project-study a:focus-visible,
+.project-study button:focus-visible { outline-color: #91addd; }
+.project-study .ui-icon-control { color: #8799b7; }
+.project-study .ui-icon-control:hover { color: #657fa9; background: #f0f4fc; }
+.project-study .slider-btn.ui-icon-control { color: #8799b7 !important; }
+
+/* Preserve the original three / two / one-column project grid. */
+.project-study .project-card h2 {
+  font-family: "Reference Hand", "Papyrus", Georgia, serif;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #556d8f;
+  min-height: 0;
+  margin-bottom: 6px;
+}
+.project-study .project-card-summary { color: #666b79; }
+.project-study .project-card-tags { color: #98a6bc; }
+.project-study .project-card-badge { color: #7e8798; }
+
+/* The main title remains readable text for assistive technology. */
+.project-study .project-title { line-height: 0; }
+.airbrush-project-title {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 550px;
+}
+.grouped-case .airbrush-project-title { max-width: 390px; }
+.project-study .case-heading .lede {
+  font-family: "Reference Hand", "Papyrus", Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: .003em;
+  color: #666775;
+}
+.project-study .case-toc {
+  font-family: "Reference Hand", "Papyrus", Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+.project-study .case-toc p {
+  font-size: 14px;
+  letter-spacing: .035em;
+  color: #98a6bc;
+}
+.project-study .case-toc a { color: #8b9bb5; }
+.project-study .case-toc a:hover,
+.project-study .case-toc a.is-active { color: #657fa9; }
+.project-study .visual-figure figcaption { color: #98a6bc; }
+.project-study .visual-figure figcaption a { color: #7e92b3; }
+.project-study .image-viewer { color: #666b79; }
+.project-study .image-viewer::backdrop { background: rgba(110, 129, 163, .66); }
+
+/* Retained older case studies keep their content and media layouts. */
+.legacy-case { color: #666b79; }
+.legacy-case .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+.legacy-case .wordmark::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+.legacy-case .site-nav a {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+  margin: 0;
+  padding: 7px 0;
+}
+.legacy-case .site-nav a[aria-current="page"] { color: #657fa9; font-weight: 700; }
+.legacy-case .project-detail .airbrush-project-title { max-width: 660px; }
+.legacy-case .project-section p,
+.legacy-case .card-info h3 { color: #666b79; }
+.legacy-case .project-section h2,
+.legacy-case .card-info span,
+.legacy-case .card-info a { color: #98a6bc; }
+
+@media (max-width: 760px) {
+  .project-study .project-card h2 { font-size: 25px; }
+  .project-study .case-heading .lede { font-size: 20px; line-height: 1.72; }
+  .project-study .case-toc a { font-size: 16px; }
+  .grouped-case .airbrush-project-title { max-width: 350px; }
+}
+@media (max-width: 620px) {
+  .project-study .project-card h2 { min-height: 0; }
+}
+@media (max-width: 560px) {
+  .legacy-case .site-header { gap: 18px; }
+  .legacy-case .site-nav { gap: 20px; }
+  .project-study .case-heading .lede { font-size: 19px; line-height: 1.76; }
+}
+
+.project-study .case-section,
+.project-study .research-group + .research-group,
+.project-study .proof-heading,
+.project-study .image-details,
+.project-study .contribution,
+.project-study .study-phase { border-color: var(--line); }
